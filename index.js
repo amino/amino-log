@@ -1,5 +1,6 @@
 exports.attach = function (options) {
   var amino = this;
+  options || (options = {});
 
   amino.log = function () {
     var args = [].slice.call(arguments);
