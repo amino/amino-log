@@ -1,0 +1,24 @@
+{
+  "name": "amino-log",
+  "version": "0.0.0",
+  "description": "logging daemon for amino applications",
+  "main": "index.js",
+  "bin": "./bin/amino-log",
+  "dependencies": {
+    "amino": "~1.1.2",
+    "commander": "~1.0.4"
+  },
+  "devDependencies": {
+    "mocha": "*"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/amino/amino-log.git"
+  },
+  "homepage": "https://github.com/amino/amino-log",
+  "author": "Carlos Rodriguez <carlos@s8f.org> (http://s8f.org/)",
+  "license": "MIT"
+}
