@@ -10,7 +10,7 @@ describe('basic test', function () {
     });
   });
 
-  it('stdout', function (done) {
+  it('log', function (done) {
     daemon.stdout.once('data', function (chunk) {
       assert.equal(chunk.toString(), 'something!\n');
       done();
@@ -20,13 +20,23 @@ describe('basic test', function () {
     }, 200);
   });
 
-  it('stderr', function (done) {
+  it('warn', function (done) {
+    daemon.stdout.once('data', function (chunk) {
+      assert.equal(chunk.toString(), 'blah...\n');
+      done();
+    });
+    setTimeout(function () {
+      amino.warn('blah...');
+    }, 200);
+  });
+
+  it('error', function (done) {
     daemon.stderr.once('data', function (chunk) {
       assert.equal(chunk.toString(), 'dude!\n');
       done();
     });
     setTimeout(function () {
-      amino.log('dude!', 'stderr');
+      amino.error('dude!');
     }, 200);
   });
 
@@ -36,7 +46,7 @@ describe('basic test', function () {
       done();
     });
     setTimeout(function () {
-      amino.log('hello %s', ['stupid'], 'stderr');
+      amino.error('hello %s', ['stupid']);
     }, 200);
   });
 });

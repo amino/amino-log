@@ -1,19 +1,21 @@
-var format = require('util').format;
-
 exports.attach = function (options) {
   var amino = this;
 
-  amino.log = function (message, vars, channel) {
-    if (typeof vars === 'string') {
-      channel = vars;
-      vars = [];
-    }
-    if (!vars) vars = [];
-    if (!channel) channel = 'stdout';
-    message = format.apply(null, [message].concat(vars));
-    amino.publish('log:' + channel, message);
+  amino.log = function () {
+    var args = [].slice.call(arguments);
+    amino.publish('log:stdout', args);
     if (!options.quiet) {
-      channel === 'stderr' ? console.error(message) : console.log(message);
+      console.log.apply(console, args);
+    }
+  };
+
+  amino.warn = amino.log;
+
+  amino.error = function () {
+    var args = [].slice.call(arguments);
+    amino.publish('log:stderr', args);
+    if (!options.quiet) {
+      console.error.apply(console, args);
     }
   };
 };

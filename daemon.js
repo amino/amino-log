@@ -12,5 +12,9 @@ program.parse(process.argv);
 
 var amino = require('amino').init({redis: program.redis});
 
-amino.subscribe('log:stdout', console.log);
-amino.subscribe('log:stderr', console.error);
+amino.subscribe('log:stdout', function (args) {
+  console.log.apply(console, args);
+});
+amino.subscribe('log:stderr', function (args) {
+  console.error.apply(console, args);
+});
