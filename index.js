@@ -10,6 +10,10 @@ exports.attach = function (options) {
     }
     if (!vars) vars = [];
     if (!channel) channel = 'stdout';
-    amino.publish('log:' + channel, format.apply(null, [message].concat(vars)));
+    message = format.apply(null, [message].concat(vars));
+    amino.publish('log:' + channel, message);
+    if (!options.quiet) {
+      channel === 'stderr' ? console.error(message) : console.log(message);
+    }
   };
 };

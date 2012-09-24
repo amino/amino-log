@@ -2,7 +2,7 @@ describe('basic test', function () {
   var daemon;
   before(function () {
     amino
-      .use(plugin)
+      .use(plugin, {quiet: true})
       .init();
     daemon = child_process.spawn(path.resolve(__dirname, '../bin/amino-log'));
     process.once('exit', function () {
