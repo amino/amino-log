@@ -3,7 +3,7 @@ amino-log
 
 logging daemon for amino applications
 
-[![build status](https://secure.travis-ci.org/carlos8f/amino-log.png)](http://travis-ci.org/carlos8f/amino-log)
+[![build status](https://secure.travis-ci.org/amino/amino-log.png)](http://travis-ci.org/amino/amino-log)
 
 - - -
 
